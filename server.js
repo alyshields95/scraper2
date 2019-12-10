@@ -1,4 +1,4 @@
-require("dotenv").config()
+// require("dotenv").config()
 var express = require("express");
 var exphbs = require("express-handlebars");
 var mongoose = require("mongoose");
@@ -21,7 +21,7 @@ app.set('index', __dirname + '/views');
 
 // If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
 var MONGODB_URI = process.env.MONGODB_URI || process.env.MLAB;
-
+console.log(MONGODB_URI);
 
 mongoose.connect(MONGODB_URI);
 
