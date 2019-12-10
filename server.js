@@ -1,3 +1,4 @@
+require("dotenv").config()
 var express = require("express");
 var exphbs = require("express-handlebars");
 var mongoose = require("mongoose");
@@ -19,12 +20,10 @@ app.set("view engine", "handlebars");
 app.set('index', __dirname + '/views');
 
 // If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+var MONGODB_URI = process.env.MONGODB_URI || process.env.MLAB;
 
 
-mongoose.connect(MONGODB_URI, { useMongoClient: true });
-
-mongoose.connect("mongodb+srv://user1:Password123@americannik-dv6zc.mongodb.net/scrape?retryWrites=true&w=majority", { useNewUrlParser: true });
+mongoose.connect(MONGODB_URI);
 
 var results = [];
 
